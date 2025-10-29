@@ -1,5 +1,6 @@
 
 import streamlit as st
+import os
 
 st.set_page_config(page_title="LangGraph Agent UI", layout="centered")
 st.title("THENABILMAN AI Chatbot Agents")
@@ -21,7 +22,7 @@ allow_web_search=st.checkbox("Allow Web Search")
 
 user_query=st.text_area("Enter your query: ", height=150, placeholder="Ask Anything!")
 
-API_URL="http://127.0.0.1:9999/chat"
+API_URL=os.getenv("API_URL", "http://127.0.0.1:9999/chat")
 
 if st.button("Ask Agent!"):
     if user_query.strip():
